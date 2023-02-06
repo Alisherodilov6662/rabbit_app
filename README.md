@@ -4,5 +4,8 @@
 </br>
 
 </h3>in this project, what kind of things are used ! </h3>
-</br>
-1)
+</br></br>
+
+This project includes RabbitConfig class which configured createing queue!
+</br></br>
+I used ubuntu server for getting request from Queue of RabbitMQ!
