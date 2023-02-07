@@ -14,11 +14,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProducerService {
 
+    private final RabbitTemplate rabbitTemplate;
 
     @Autowired
-    private RabbitTemplate rabbitTemplate;
+    public ProducerService(RabbitTemplate rabbitTemplate){
+        this.rabbitTemplate=rabbitTemplate;
+    }
 
     public void send(String values) {
-        rabbitTemplate.convertAndSend(RabbitMqConfig.EXCHANGE_NAME, "test.springmessages", values);
+        rabbitTemplate.convertAndSend(RabbitMqConfig.EXCHANGE_NAME, values);
     }
 }

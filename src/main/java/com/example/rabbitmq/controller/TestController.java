@@ -21,4 +21,5 @@ public class TestController {
         producerService.send(message);
         return "send";
     }
+    //brauserdan test qilishda get yozdim chunki brauserda faqat get method ishlaydi postni httpda tekshirishimiz kerak
 }

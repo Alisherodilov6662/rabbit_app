@@ -1,6 +1,7 @@
 package com.example.rabbitmq.service;
 
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
 /**
@@ -10,13 +11,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class ConsumerService {
 
-    @RabbitListener(queues = {"forTest"})
-    public void receiveMessage(String fileBody) {
+    @RabbitListener(queues = {"firstQueue"})
+    public void receiveMessage(@Payload String fileBody) {
         System.out.println("Consume :  " + fileBody);
     }
 
-    @RabbitListener(queues = {"testqueueno2"})
-    public void receiveMessage1(String fileBody) {
+    @RabbitListener(queues = {"secondQueue"})
+    public void receiveMessage1(@Payload String fileBody) {
         System.out.println(fileBody);
     }
 }
+
+//shu Serviceni o`zi yetadi queue ni listen qilib turish uchun
