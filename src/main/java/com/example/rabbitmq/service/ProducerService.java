@@ -6,22 +6,35 @@ package com.example.rabbitmq.service;
  */
 
 
-import com.example.rabbitmq.config.RabbitMqConfig;
+import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+
 
 @Service
 public class ProducerService {
 
+
     private final RabbitTemplate rabbitTemplate;
 
+    private final Queue queue;
+    private final Queue queue1;
+
+
     @Autowired
-    public ProducerService(RabbitTemplate rabbitTemplate){
-        this.rabbitTemplate=rabbitTemplate;
+    public ProducerService(RabbitTemplate rabbitTemplate, @Qualifier("queue1") Queue queue, @Qualifier("queue2") Queue queue1) {
+        this.rabbitTemplate = rabbitTemplate;
+        this.queue = queue;
+        this.queue1 = queue1;
     }
 
     public void send(String values) {
-        rabbitTemplate.convertAndSend(RabbitMqConfig.EXCHANGE_NAME, values);
+        rabbitTemplate.convertAndSend(this.queue.getName(), values);
+    }
+
+    public void send2(String values) {
+        rabbitTemplate.convertAndSend(this.queue1.getName(), values);
     }
 }

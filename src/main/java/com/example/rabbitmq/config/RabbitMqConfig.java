@@ -8,6 +8,7 @@ import org.springframework.amqp.core.TopicExchange;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
+import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.amqp.support.converter.SimpleMessageConverter;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -43,7 +44,7 @@ public class RabbitMqConfig {
     Binding binding1(@Qualifier("queue2") Queue q, TopicExchange exchange) {
         return BindingBuilder.bind(q).to(exchange).with("test.#");
     } //br nechta queue yaratsak bitta TopicExchange ga xar bir queueni binding qilib chiqamiz
-    //TopicExchange larni boshqacha varianti xam bor.
+//    TopicExchange larni boshqacha varianti xam bor.
 
     @Bean
     public RabbitTemplate rabbitTemplate(final ConnectionFactory connectionFactory) {
@@ -53,13 +54,13 @@ public class RabbitMqConfig {
     }
 
     @Bean
-    public Jackson2JsonMessageConverter producerJackson2MessageConverter() {
+    public MessageConverter jsonMessageConverter() {
         return new Jackson2JsonMessageConverter();
     }
 
     @Bean
     public SimpleMessageConverter simpleMessageConverter() {
         return new SimpleMessageConverter();
-    }
+    } //rabbitTemplate ga jsonMessageConverter o`rniga shu simpleMessageConvertorni yozsak ham bo`ladi
 
 }

@@ -21,5 +21,11 @@ public class TestController {
         producerService.send(message);
         return "send";
     }
+
+    @GetMapping("/test2/{message}")
+    public String sendMessage2(@PathVariable("message") String message) {
+        producerService.send2(message);
+        return "send";
+    }
     //brauserdan test qilishda get yozdim chunki brauserda faqat get method ishlaydi postni httpda tekshirishimiz kerak
 }
