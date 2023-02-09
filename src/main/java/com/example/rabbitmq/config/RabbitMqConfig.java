@@ -18,7 +18,7 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitMqConfig {
 
 
-    public static final String EXCHANGE_NAME = "testexchange";
+    private static final String EXCHANGE_NAME = "testexchange";
 
     @Bean("queue1")
     Queue createQueue() {
@@ -53,10 +53,10 @@ public class RabbitMqConfig {
         return rabbitTemplate;
     }
 
-    @Bean
-    public MessageConverter jsonMessageConverter() {
-        return new Jackson2JsonMessageConverter();
-    }
+//    @Bean
+//    public MessageConverter jsonMessageConverter() {
+//        return new Jackson2JsonMessageConverter();
+//    }
 
     @Bean
     public SimpleMessageConverter simpleMessageConverter() {
