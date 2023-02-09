@@ -32,6 +32,7 @@ public class ProducerService {
 
     public void send(String values) {
         rabbitTemplate.convertAndSend(this.queue.getName(), values);
+//        rabbitTemplate.convertAndSend(this.queue1.getName(),values); agar shuni yozsak pastdagi methodni keragi ham yo`q
     }
 
     public void send2(String values) {
