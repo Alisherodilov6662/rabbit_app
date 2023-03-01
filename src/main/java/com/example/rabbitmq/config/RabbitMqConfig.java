@@ -15,8 +15,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitMqConfig {
 
-
     private static final String EXCHANGE_NAME = "testexchange";
+
 
     @Bean("queue1")
     Queue createQueue() {
