@@ -19,6 +19,8 @@ public class RabbitMqConfig {
     private static final String EXCHANGE_NAME = "testexchange";
 
 
+
+
     @Bean("queue1")
     Queue createQueue() {
         return new Queue("firstQueue", false);

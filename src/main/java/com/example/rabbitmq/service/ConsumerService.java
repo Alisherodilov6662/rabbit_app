@@ -20,6 +20,7 @@ public class ConsumerService {
     public void receiveMessage1(@Payload String fileBody) {
         System.out.println(fileBody);
     }
+
 }
 
 //shu Serviceni o`zi yetadi queue ni listen qilib turish uchun
