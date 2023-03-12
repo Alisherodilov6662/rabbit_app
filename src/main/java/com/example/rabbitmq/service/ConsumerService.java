@@ -16,12 +16,10 @@ public class ConsumerService {
         System.out.println("Consume :  " + fileBody);
     }
 
-
     @RabbitListener(queues = {"secondQueue"})
     public void receiveMessage1(@Payload String fileBody) {
         System.out.println(fileBody);
     }
-
 
 }
 
