@@ -23,12 +23,15 @@ public class ProducerService {
     private final Queue queue1;
 
 
+
     @Autowired
     public ProducerService(RabbitTemplate rabbitTemplate, @Qualifier("queue1") Queue queue, @Qualifier("queue2") Queue queue1) {
         this.rabbitTemplate = rabbitTemplate;
         this.queue = queue;
         this.queue1 = queue1;
     }
+
+
 
     public void send(String values) {
         rabbitTemplate.convertAndSend(this.queue.getName(), values);

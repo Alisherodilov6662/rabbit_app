@@ -11,10 +11,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class ConsumerService {
 
+
     @RabbitListener(queues = {"firstQueue"})
     public void receiveMessage(@Payload String fileBody) {
         System.out.println("Consume :  " + fileBody);
     }
+
 
     @RabbitListener(queues = {"secondQueue"})
     public void receiveMessage1(@Payload String fileBody) {
