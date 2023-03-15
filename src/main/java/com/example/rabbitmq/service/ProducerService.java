@@ -19,7 +19,9 @@ public class ProducerService {
 
     private final RabbitTemplate rabbitTemplate;
 
+
     private final Queue queue;
+
     private final Queue queue1;
 
 
